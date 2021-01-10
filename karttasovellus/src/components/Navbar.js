@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 
-
+//Sovellusken navigointi. Tähän voisilaittaa linkkejä minne tahansa.
 function Navigation() {
     return (
         <Container fluid className="p-0">

@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 import { Container,Tab, Tabs } from 'react-bootstrap';
 import Navbar from './components/Navbar'
 import MyMapComponent from './components/GoogleMap'

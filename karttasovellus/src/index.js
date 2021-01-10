@@ -4,15 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
-import allReducers from './reducers';
+import allReducers from './reducers'; 
 import {Provider} from 'react-redux';
 
+//Luon redux store, Toinen parametri mahdollistaa chromessa redux lisäosan käytön
 const store = createStore(allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+// Sovellluksen renderöinti ja sredux storen liittäminen sovellukseen
 ReactDOM.render(
-
   <React.StrictMode>
     <Provider store={store}>
       <App />

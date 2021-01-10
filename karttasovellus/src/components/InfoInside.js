@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Form, Button, Image, Row } from 'react-bootstrap';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { changeMarker, deleteMarker, addImage, deleteImage } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import ImageUploader from 'react-images-upload';
-import ReactFileReader from 'react-file-reader';
+
+//Tässä tiedostossa muodostan markkerin info ikkunan sisällön ja kaikki toiminnot siihen liittyen. 
 
 //kuvan koko määritellään tässä
 const kuvaKoko = {
@@ -20,6 +20,7 @@ function Info(props) {
     // Tällä dispatherilla muokataan dataa
     const dispatch = useDispatch();
 
+    // tässä tarkastetaan disabloidaanko muokkaa nappi aluksi vai ei
     const tarkastaMuokkaa = () => {
         if (markers[props.index].data !== "") {
             return true;
@@ -28,7 +29,7 @@ function Info(props) {
             return false;
         }
     }
-
+// tässä tarkastetaan disabloidaanko poista kuva nappi aluksi vai ei
     const tarkastaMuokkaaKuva = () => {
         if (markers[props.index].kuva !== null) {
             return true;
@@ -38,23 +39,28 @@ function Info(props) {
         }
     }
 
+    // Näissä useState muuttujissa pidän yllä tietia muokkaa ja poista kuva nappien disaploinnista
     const [muokkaa, setMuokkaa] = useState(tarkastaMuokkaa());
     const [kuvaD, setKuvaD] = useState(tarkastaMuokkaaKuva());
 
+    // Tämä funtio tallettaa tekstiä reduxiin sitä mukaan kun se muuttuu
     const tekstiMuuttunut = (e) => {
         dispatch(changeMarker(props.index, e.target.value));
     }
 
+    // Funtio poistaa markkerin kokonaan reduxista
     const poistaMarkkeri = () => {
         dispatch(deleteMarker(props.index));
         props.sulje(null);
     }
 
+    //Poistaa kuvan kokonaan markkerista ja disaploi poistakuva napin
     const poistaKuva = () => {
         setKuvaD(!kuvaD);
         dispatch(deleteImage(props.index));
     }
 
+    //Funktio avaa poista kuva napin ja tallettaa annetun kuvan url:n reduxiin
     const onDrop = (kuva) => {
         setKuvaD(!kuvaD);
         let url = URL.createObjectURL(kuva[0]);

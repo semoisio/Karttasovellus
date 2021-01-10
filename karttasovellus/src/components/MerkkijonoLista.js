@@ -4,16 +4,18 @@ import React from 'react';
 import {  useSelector } from 'react-redux';
 import MerkkijonoListaSisalto from './MerkkijonoListaSisalto';
 
+//Tässä teen tarkistukset näytetäänkö listassa vielä mitään. 
+
 function MerkkijonoLista() {
     //Otetaan markkeri taulukko reduxista
     const markers = useSelector(state => state.markers);
     
     // Jos taulussa ei ole dataa ei näytetä mitään
     const tarkastaData = () => {
-        
         return markers.filter((marker) => {
             if (marker !== undefined){
-            return marker.data !== "" || marker.kuva !== null;
+                //Jos tekstiä tai kuvia ei ole markkerissa silloin ei näytetä vielä mitään.
+                return marker.data !== "" || marker.kuva !== null;
             }
         })
     }

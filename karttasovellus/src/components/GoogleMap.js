@@ -1,10 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import InfoInside from './InfoInside';
 import { addMarker } from '../actions';
+
+/* Tässä komponentissa luodaan google mapsi sivustolle.
+Toiminnot: markkerin lisäys ja infoikkunan avaus.
+*/
 
 // Asetetaan kartan koko näytölle
 const containerStyle = {
@@ -27,7 +30,7 @@ function MyMapComponent() {
     const [selected, setSelected] = useState(null);
 
 
-    // Funktio lisää uuden markkerin reduxin storeen
+    // Funktio lisää uuden markkerin reduxin storeen. 
     const lisaamarker = useCallback((e) => {
         dispatch(addMarker({
             lat: e.latLng.lat(),
@@ -39,6 +42,7 @@ function MyMapComponent() {
         setSelected(null);
     }, []);
 
+    //Funktio asettaa oikean markkerin valituksi. Tällä hallitaan sitä mikä infoikkua avataa
     const paivitaMarkeri = (marker) => {
         setSelected(null);
         setSelected(marker);
@@ -70,7 +74,8 @@ function MyMapComponent() {
                 zoom={14}
             >
                 {markerit}
-                {selected ? <InfoWindow
+                {// jos ei olla valittu markkeria niin infoikkuna ei näy missään. Info ikkuna avataa valitun markkerin kohdalle
+                selected ? <InfoWindow
                     position={{ lat: selected.lat, lng: selected.lng }}
                     onCloseClick={() => { setSelected(null) }} >
                     <InfoInside index={selected.index} sulje={setSelected} />

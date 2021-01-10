@@ -1,3 +1,5 @@
+//Tässä tiedostossa minulla on kaikki reducerit eli kaikki  toiminnot mit haluan tehdä datalleni
+
 const markerReducer = (state = [], action) => {
     switch(action.type){
         case 'ADD':     
