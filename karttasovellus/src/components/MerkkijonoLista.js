@@ -5,14 +5,23 @@ import {  useSelector } from 'react-redux';
 import MerkkijonoListaSisalto from './MerkkijonoListaSisalto';
 
 function MerkkijonoLista() {
+    //Otetaan markkeri taulukko reduxista
     const markers = useSelector(state => state.markers);
-
+    
+    // Jos taulussa ei ole dataa ei näytetä mitään
+    const tarkastaData = () => {
+        
+        return markers.filter((marker) => {
+            if (marker !== undefined){
+            return marker.data !== "" || marker.kuva !== null;
+            }
+        })
+    }
 
     return (
         <Container fluid className="p-0">
-            {markers.length === 0 ?
-            <h2>EI vielä yhtään merkkijonoa tallennettuna</h2>: <MerkkijonoListaSisalto/>}
-            
+            {markers.length === 0 || tarkastaData().length === 0 ?
+            <h2>Ei vielä yhtään merkkijonoa tallennettuna</h2>: <MerkkijonoListaSisalto/>}  
         </Container>
 
     );
