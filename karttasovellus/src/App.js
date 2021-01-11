@@ -12,7 +12,7 @@ function App() {
   const [key, setKey] = useState('Kartta');
 
   return (
-    <Container fluid className="App" className="p-0">
+    <Container data-testid="App_Container" fluid className="App" className="p-0">
       <Navbar />
       <Tabs activeKey={key} onSelect={(k) => setKey(k)} transition={false}>
         <Tab eventKey="Kartta" title="Kartta">

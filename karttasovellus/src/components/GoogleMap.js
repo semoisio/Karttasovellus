@@ -62,8 +62,8 @@ function MyMapComponent() {
 
     return (
 
-        <LoadScript
-            googleMapsApiKey="AIzaSyAym0Ix26G_GEl_37krCNNYZQFvTnqRVEM"
+        <LoadScript data-testid="loadScript"
+            googleMapsApiKey="Api key here"
         >
             <GoogleMap
                 onRightClick={(e) => { lisaamarker(e) }}
