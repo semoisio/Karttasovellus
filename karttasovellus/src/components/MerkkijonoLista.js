@@ -23,7 +23,7 @@ function MerkkijonoLista() {
     return (
         <Container fluid className="p-0">
             {markers.length === 0 || tarkastaData().length === 0 ?
-            <h2>Ei vielä yhtään merkkijonoa tallennettuna</h2>: <MerkkijonoListaSisalto/>}  
+            <h2>Ei vielä yhtään merkkijonoa tallennettuna</h2> : <MerkkijonoListaSisalto/>}  
         </Container>
 
     );

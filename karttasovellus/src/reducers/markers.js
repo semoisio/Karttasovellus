@@ -12,7 +12,6 @@ const markerReducer = (state = [], action) => {
             return[...state];
         case 'ADD_IMAGE':
             state[action.payload.index].kuva = action.payload.kuva;
-            console.log(state[action.payload.index].kuva);
             return [...state];
         case 'DELETE_IMAGE':
             state[action.payload.index].kuva = null;

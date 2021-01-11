@@ -63,9 +63,9 @@ function Info(props) {
     //Funktio avaa poista kuva napin ja tallettaa annetun kuvan url:n reduxiin
     const onDrop = (kuva) => {
         setKuvaD(!kuvaD);
-        let url = URL.createObjectURL(kuva[0]);
+        //let url = URL.createObjectURL(kuva[0]);
 
-        dispatch(addImage(props.index, url))
+        dispatch(addImage(props.index, kuva[0]))
 
     }
 
@@ -89,7 +89,7 @@ function Info(props) {
                         onChange={onDrop}
                         imgExtension={['.jpg', '.gif', '.png', '.gif']}
                         maxFileSize={5242880}
-                    /> : <Image rounded style={kuvaKoko} src={markers[props.index].kuva} />}
+                    /> : <Image rounded style={kuvaKoko} src={URL.createObjectURL(markers[props.index].kuva)} />}
                 </Row>
                 <Button
                     className="mr-1"

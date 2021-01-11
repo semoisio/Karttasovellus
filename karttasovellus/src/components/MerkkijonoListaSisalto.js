@@ -21,7 +21,7 @@ function MerkkijonoListaSisalto() {
             return <ListGroup.Item key={index}>
                 {marker.data}
                 {marker.kuva !== null ? // jos ei kuvaa ei sitä näytetä
-                <Image className="pl-5" style={kuvaKoko} src={marker.kuva}/>: null}
+                <Image className="pl-5" style={kuvaKoko} src={URL.createObjectURL(marker.kuva)}/>: null}
                 
             </ListGroup.Item>
         }

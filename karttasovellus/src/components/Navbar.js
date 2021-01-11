@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import React from 'react';
 
 
 //Sovellusken navigointi. Tähän voisilaittaa linkkejä minne tahansa.

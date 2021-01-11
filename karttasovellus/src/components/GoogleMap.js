@@ -60,7 +60,6 @@ function MyMapComponent() {
         }
     });
 
-    console.log(selected);
     return (
 
         <LoadScript
