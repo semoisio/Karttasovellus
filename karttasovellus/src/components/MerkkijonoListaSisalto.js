@@ -17,7 +17,7 @@ function MerkkijonoListaSisalto() {
     //Mäpätään sisältö Listaann. Jos ei ole tallennettu markkereihin mitän silloin ei näytetä mitään
     const sisalto = markers.map((marker, index) => {
         
-        if (marker !== undefined || marker.data !== "" || marker.kuva !== null ) {
+        if (marker !== undefined && marker.data !== "" || marker.kuva !== null ) {
             return <ListGroup.Item key={index}>
                 {marker.data}
                 {marker.kuva !== null ? // jos ei kuvaa ei sitä näytetä
